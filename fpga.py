@@ -433,7 +433,9 @@ class FPGA:
 	
 	def putJob(self, work):
 		job = Object()
-		job.midstate = work['midstate']
+		# Commented out midstate as pool does not supply it, which causes getwork error
+		# (its not needed as midstate is calculated locally)
+		# job.midstate = work['midstate']
 		job.data = work['data']
 		job.target = work['target']
 		self.jobqueue.put(job)

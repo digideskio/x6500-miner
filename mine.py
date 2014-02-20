@@ -101,7 +101,9 @@ def checkNonce(gold):
 	#	os.system ("echo ./checkblake " + chkdata + ">>logmine-ms.log")	# Log file is runnable as a shell script
 	#	os.system ("./checkblake " + chkdata)
 	
-	# return True	# Just assume its OK
+	# Bypass checkTarget and sumbit ALL diff 1 shares regardless of target. This may not be
+	# appropriate with vardiff pools or solo mining, but is safer so is now the default behaviour
+	return True		# NB comment this out to enable target check
 		
 	if checkTarget(BASE_TARGET, hashOutput):
 		logger.reportValid(gold.fpgaID)
